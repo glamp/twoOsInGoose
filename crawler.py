@@ -1,6 +1,6 @@
 import redis
 import json
-import urllib2
+import urllib2, urlparse
 from bs4 import SoupStrainer, BeautifulSoup
 import re
 import random
@@ -14,6 +14,9 @@ def get_http(url):
     return src
 
 def get_urls(url, html):
+
+    # host = urlparse.urlparse(url).hostname
+    # domains.get(host)
 
     wordcount = {}
     print "Getting word count for %s" % url
@@ -30,12 +33,30 @@ def get_urls(url, html):
             get_urls(a['href'], get_http(a['href']))
 
 
+domains = {}
 seen = set()
 
 a_strainer = SoupStrainer('a')
 splitter = re.compile("\\W+")
 
-url = "http://www.cnn.com/"
 r = redis.StrictRedis()
 
-get_urls(url, get_http(url))
+def main():
+    url = "http://www.cnn.com/"
+    get_urls(url, get_http(url))
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+
+    
+
+
+
+
+
+
