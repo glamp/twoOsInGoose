@@ -7,7 +7,7 @@ Execute in 2 windows:
 ``` shell
   python crawler.py
 ```
-``` python
+``` bash
   python printer.py
 ```
 
