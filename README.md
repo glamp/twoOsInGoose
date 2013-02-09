@@ -7,9 +7,10 @@ Execute in 2 windows:
 ``` shell
   python crawler.py
 ```
-``` bash
+
+``` shell
   python printer.py
 ```
 
-crawler will crawl urls and publish the word count for each url to redis
-printer subscribes to the redis feed and will print the word count for each url
+* crawler will crawl urls and publish the word count for each url to a redis channel
+* printer is a sample client subscriber illustrating how to subscribe
